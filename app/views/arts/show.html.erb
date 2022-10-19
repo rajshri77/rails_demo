@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @art %>
+
+<div>
+  <%= link_to "Edit this art", edit_art_path(@art) %> |
+  <%= link_to "Back to arts", arts_path %>
+  <% if user_signed_in? %>
+  | <%= link_to "Like", likes_create_path(:art_id => @art.id)%>
+  <%end%>
+
+  <%= button_to "Destroy this art", @art, method: :delete %>
+</div>
