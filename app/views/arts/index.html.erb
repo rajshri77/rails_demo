@@ -6,9 +6,11 @@
   <% @arts.each do |art| %>
     <%= render art %>
 
+    <% @total_likes = Art.find(art.id).users.count%>
+
     <p>
       <%= link_to "Show this art", art %>
-
+      Likes <%= @total_likes%>
       ==================================================
     </p>
   <% end %>

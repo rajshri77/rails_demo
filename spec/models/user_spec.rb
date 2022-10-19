@@ -9,13 +9,8 @@ end
     expect(@user1).to be_valid
   end
 
-  it "has a unique username" do
-    user2 = build(:user, email:"rajshri@gmail.com")
-    expect(user2).to be_valid
-  end
-
   it "has a unique email" do
-    user2 = build(:user, username: "Rajshri")
+    user2 = build(:user, email: "rajshri2@gmail.com")
     expect(user2).to_not be_valid
   end
 

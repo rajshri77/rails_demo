@@ -3,9 +3,12 @@ class LikesController < ApplicationController
     puts "Create ************"
     # current_user_id = User.find(current_user.id)
     @art = Art.find(params[:art_id])
-    puts " #{@art } *******************"
 
-    current_user.arts = [@art]
+    if current_user.arts.present?
+      current_user.arts << @art
+    else
+      current_user.arts = [@art]
+    end
 
     #puts current_user_id
     #puts @art
@@ -14,10 +17,10 @@ class LikesController < ApplicationController
   end
 
   def delete
-    puts "Delete ******************"
   end
 
   def count
-    puts "Count *********************"
+    @like_count = Art.find(params[:art_id]).users.count
+    puts "Count ********************* #{@like_count}"
   end
 end
